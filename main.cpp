@@ -1,4 +1,5 @@
-#include <iostream>
+#include "Essentials.h"
+#include "Jobs & Problems.h"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int is_valid_input(int start, int end){
     // checks to see if a an input is inside a given interval
     int my_input;
 
-    cout<<"please choose an option: ";
+    cout<<"please choose a option: ";
 
     cin>>my_input;
 
@@ -25,23 +26,23 @@ int is_valid_input(int start, int end){
     return my_input;
 }
 
-class worker{
+class customer{
 private:
     char *name = (char*)malloc(21 * sizeof(char));
-    int income;
 public:
-    char *skill;
-
-    //worker(char *name, int income, char *skill){};
 
     friend class manager;
 };
 
-class customer{
+class worker{
+
 private:
-    char *name;
+    char *name = (char*)malloc(21 * sizeof(char));
+    int income;
+    customer *assigned;
 
 public:
+    char *task = (char*)malloc(51 * sizeof(char));
 
     friend class manager;
 };
@@ -49,7 +50,7 @@ public:
 class manager{
 private:
 
-    char *name;
+    char *name = (char*)malloc(21 * sizeof(char));
     int money;
     worker workers_list[50];
     customer customers_list[50];
@@ -66,13 +67,28 @@ public:
     }
 
     void hire(){
-
+        
+        int input;
         worker new_worker;
+        
         cout<<"enter the worker's name: "<<endl;
         cin>>new_worker.name;
-        new_worker.income = 1000;
-        new_worker.skill = "khar";
+        cout<<endl;
+
+        cout<<"Please assign a task"<<endl;
+        for (int i = 0; i < 5; i ++){
+            cout<<(i + 1)<<"- "<<Job_titles[i]<<" Monthly Salary: "<< Jobs_minimum_wage[i]<<"$"<<endl;
+        }
+
+        input = is_valid_input(1, 5);
+        input--;
+
+        new_worker.task = Job_titles[input];
+        new_worker.income = Jobs_minimum_wage[input];
+
+
         workers_list[number_of_workers] = new_worker;
+        cout<<workers_list[number_of_workers].name<<" "<<workers_list[number_of_workers].income<<" "<<workers_list[number_of_workers].task<<endl;
 
         number_of_workers++;
     }
@@ -80,7 +96,7 @@ public:
     void show_workers(){
         cout<<"number of workers: "<<number_of_workers<<endl;
         for (int i = 0; i < number_of_workers; i++){
-            cout<<workers_list[i].name<<" "<<workers_list[i].income<<" "<<workers_list[i].skill<<endl;
+            cout<<workers_list[i].name<<" "<<workers_list[i].income<<" "<<workers_list[i].task<<endl;
         }
     }
 
@@ -99,7 +115,7 @@ int main(){
 
     while(true){
 
-        
+
         menu();
 
         int menu_input = is_valid_input(0,4);
@@ -107,15 +123,15 @@ int main(){
         switch(menu_input){
             case 1:
                 Manager.hire();
+                return_to_menu_prompt();
                 break;
             case 2:
                 Manager.show_workers();
+                return_to_menu_prompt();
                 break;
             case 0:
                 cout<<"bye";
                 return 0;
         }
-        
     }
-
 }
