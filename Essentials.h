@@ -4,11 +4,30 @@
 #define Minimum_Job_Time 5
 #define PROBLEMS_COUNT 16
 
+#define Max_Workers 50
+#define Max_Customers 10
+
+#define Mult_Parts 0
+#define One_Part 1
+#define No_Parts 2
+
+using namespace std;
+
 void empty_buffer(){
     char c;
 
     while((c=getchar()) != '\n');
 
+}
+
+void str_cpy(char copied_to[], char copied_from[]){
+    int counter;
+    counter = 0;
+
+    while (copied_from[counter]){
+        copied_to[counter] = copied_from[counter];
+        counter++;
+    }
 }
 
 int str_len(char string[]){
@@ -49,7 +68,7 @@ void return_to_menu_prompt(){
     empty_buffer();
     char *foo;
 
-    printf("\nEnter any input to continue: ");
+    cout<<"Press Enter to continue: ";
     scanf("s" ,foo);
     empty_buffer();
 }
