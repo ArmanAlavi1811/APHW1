@@ -1,18 +1,31 @@
-char Job_titles[5][50] = {"Service Technician", "Brake and Transmission Technician", "Body Repair Technician", "Motor Repairer", "Tune-up Specialist"};
+char Job_titles[5][50] = {"Service Technician", "Brake and Transmission Technician",
+"Body Repair Technician", "Motor Repairer", "Tune-up Specialist"};
 int Jobs_minimum_wage[5] = {3000, 3200, 2700, 3600, 2900};
 
-// class Job{
-// public:
-//     char *Job_title = (char *) malloc(51 * sizeof(char));
-//     int Job_Salary;
+class Part{
+public:
+    char *name = (char *) malloc(30 * sizeof(char));
+    int price;
 
-//     Job(char Job_title[50] = "None", int Job_Salary = 0):Job_title(Job_title), Job_Salary(Job_Salary){};
-// };
+    Part(char *name, int price):name(name), price(price){}
+};
 
-// Job SE("Service Technician", 3000);
-// Job BT("Brake and Transmission Technician", 3200);
-// Job BR("Body Repair Technician", 2700);
-// Job MR("Motor Repairer", 3600);
-// Job TU("Tune-up Specialist", 2900);
+// Part Engine("Engine",5500);
+// Part Radiator("Radiator", 40);
+// Part Battery("Battery", 70);
 
-// Job Jobs[5] = {SE, BT, BR, MR, TU};
+// Part Door("Door", 900);
+// Part Wheel("Wheel", 100);
+// Part Lights("Lights", 60);
+// Part Windscreen("Windscreen", 100);
+
+// Part Transmission("Transmission", 600);
+// Part Brakes("Brakrs",400);
+
+// Part FIS("Fuel Injection System", 450);
+// Part Muffler("Muffler", 90);
+
+// Part Motoroil("MotorOil", 6);
+
+// Part Parts[12] = {Engine,Radiator,Battery,Door,Wheel,Lights,Windscreen,
+// Transmission,Brakes,FIS,Muffler,Motoroil};
