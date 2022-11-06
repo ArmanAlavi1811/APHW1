@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #define Minimum_Job_Time 5
+#define PROBLEMS_COUNT 16
 
 void empty_buffer(){
     char c;
